@@ -18,6 +18,8 @@ function createGrid(size) {
         // set dynamic height and width as a % of the total(parent dim)
         squareGrid.style.width = `${squareDim}%`;
         squareGrid.style.height = `${squareDim}%`;
+
+        addHoverEffect(squareGrid);
         
         mainBox.appendChild(squareGrid);
     }
@@ -28,15 +30,20 @@ function sizeBtn() {
     const gridSizeBtn = document.querySelector("#gridSize");
 
     gridSizeBtn.addEventListener("click", () => {
-    let size = Number(prompt("Please enter a grid size number between 1 and 100 (total grid = size x size): "));
-
-    if (size > 0 && size <= 100) {
-        createGrid(size)
-    } else {
-        alert("Please enter a number between 1 and 100.")
-    }
+        let size = Number(prompt("Please enter a grid size number between 1 and 100 (total grid = size x size): "));
+        
+        if (size > 0 && size <= 100) {
+            createGrid(size);
+        }else {
+            alert("Please enter a number between 1 and 100.");
+        }
     })
-};
+}
 
+function addHoverEffect(square) {
+    square.addEventListener("mouseover", () => {
+        square.style.backgroundColor = "blue";
+    })
+}
 sizeBtn();
-createGrid(16)
+createGrid(16);
