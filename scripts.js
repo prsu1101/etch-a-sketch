@@ -2,6 +2,8 @@ const mainBox = document.createElement("div");
 mainBox.classList.add("container");
 document.body.appendChild(mainBox);
 
+
+
 function createGrid(size) {
     // clears the mainBox before starting
     mainBox.textContent = "";
@@ -22,4 +24,19 @@ function createGrid(size) {
     
 }
 
+function sizeBtn() {
+    const gridSizeBtn = document.querySelector("#gridSize");
+
+    gridSizeBtn.addEventListener("click", () => {
+    let size = Number(prompt("Please enter a grid size number between 1 and 100 (total grid = size x size): "));
+
+    if (size > 0 && size <= 100) {
+        createGrid(size)
+    } else {
+        alert("Please enter a number between 1 and 100.")
+    }
+    })
+};
+
+sizeBtn();
 createGrid(16)
